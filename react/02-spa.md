@@ -22,24 +22,23 @@
 - Fast & less config
 - [Tools recommended](https://reactjs.org/docs/testing.html) : Jest and  React Testing Library (helpers)
 
-### Points
+## Points
 
 ### HTML VS JSX
-- naming style is JS kind (camel case)
 
 ```
 | HTML                 | JSX                      |
 |----------------------|--------------------------|
 | for                  | htmlFor                  |
 | class                | className                |
-| <!-- comment-->      | {*/ comment /*}          |
+| <!-- comment-->      | {/* comment */}          |
 | <style color="blue"> | <style={{color:'blue'}}> |
 ```
 
-- to prevent conflict with reserved JS keywords
+- JSX: javascript naming style and preventing conflict with reserved keywords
 
 - convert html to JSX
-  - online tools
+  - online tools like [htmltojsx](https://magic.reactjs.net/htmltojsx.htm)
   - npm package : htmltojsx
 
 
@@ -73,7 +72,12 @@ class Greeting extends Component {
 
 ### React renderers
 
-- react-dom
-- react-native
-- react-vr
-- [More](https://github.com/chentsulin/awesome-react-renderer)
+- react-dom , react-native, react-vr
+
+
+### Unix philosophy
+
+
+<blockquote>
+"Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface" by Doug Mcllroy
+</blockquote>

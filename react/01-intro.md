@@ -27,6 +27,7 @@
 | Others            | React                                 |
 |-------------------|---------------------------------------|
 | Framework         | library                               |
+| DOM               | VIrtual DOM                           |
 | JS in HTML        | HTML in JS                            |
 | Separate Template | Single file component                 |
 | Community backed  | Corporate backed (driven by FB needs) |
@@ -46,3 +47,13 @@
 
 ## Easy upgrade
 - Using [code mod](https://github.com/reactjs/react-codemod) scripts to update breaking change APIs
+
+## Other links
+- [React renderers](https://github.com/chentsulin/awesome-react-renderer)
+- [React starter projects](https://www.javascriptstuff.com/react-starter-projects/)
+- [Babel repl](https://babeljs.io/repl) : to check JSX to pure javascript
+- JSComplete links
+   - [React common faced problems](https://jscomplete.com/learn/react-beyond-basics/react-cfp)
+   - [Why react](https://jscomplete.com/learn/why-react)
+   - [React beyond basics](https://jscomplete.com/learn/react-beyond-basics)
+- [JSX Specification](https://facebook.github.io/jsx/)   
