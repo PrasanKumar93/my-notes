@@ -34,6 +34,7 @@ ReactDOM.render(<Hello title="World" />, rootElement);
 ``` 
 
 - JSX is not HTML, it's converted to pure javascript check [Babel repl](https://babeljs.io/repl)
+- For JSX syntax in js file, we must import React lib
 
 ```js
 //above class style code in JS
@@ -94,8 +95,8 @@ onClick={functionReference}
 function CardList(props) {
   return (
     <div className="card-list-container">
-      {props.dataArr.map((elm) => {      {/*looping example*/}
-        return <Card {...elm} />;        {/*spreading properties*/}
+      {props.dataArr.map((elm) => {      {/*looping example, also child item must have unique key*/}
+        return <Card key={elm.id} {...elm} />;        {/*spreading properties*/}
       })}
     </div>
   );
@@ -169,3 +170,79 @@ arrSetter([...arr, newElm]);
 [Sandbox link](https://codesandbox.io/s/dazzling-ritchie-z05j6?file=/src/index.js)
 
 [Gist link](https://gist.github.com/PrasanKumar93/90c8e8c44e118767c1b61a469010e3ec)
+
+
+```js
+//in class style function alternate to hooks (getter/ setter) -> following setState style
+
+constructor(){
+    this.state = {
+        userName:''
+    }
+}
+
+someFunc(){
+  this.setState({userName:'newVal'});
+}
+```
+
+- Move all hooks in to custom hook function for better code maintenance
+
+
+### useEffect() & key example
+
+- think useEffect() like load() & it’s return function like unload() But useEffect() will run on every state change !!
+
+```js
+function Card(props) {
+  React.useEffect(() => {
+    console.log(props.login + " rendered");
+
+    return () => {
+      console.log(props.login + " unloaded");
+    };
+  });
+
+  return (
+    <div className="card">
+     ...
+    </div>
+  );
+}
+```
+
+- **when ever a state changes entire existing element gets re-rendered intelligently (virtual dom diff), but code gets re-executed**
+
+```js
+let oneTimeReLoad = false;
+function CardList(props) {
+  let [dataArr, dataArrSetter] = React.useState(props.dataArr);
+  console.log("--CardList loaded--");
+
+  if (!oneTimeReLoad) {
+    setTimeout(() => {
+      console.log("--time out--");
+
+      let newArr = dataArr.map((itm) => {
+        itm.name += " 1";
+        return itm;
+      });
+      dataArrSetter(newArr); //so current CardList re-loaded
+    }, 5000);
+  }
+  oneTimeReLoad = true;
+
+  return (
+    <div className="card-list-container">
+      {props.dataArr.map((elm) => {
+        return <Card key={elm.id} {...elm} />;  //repeating element needs key value
+      })}
+    </div>
+  );
+}
+
+```
+
+-  If key value changes, React will unmount the component & load  again as new component
+
+- [sandbox link](https://codesandbox.io/s/condescending-cray-exqrl?file=/src/card.js)

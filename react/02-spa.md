@@ -81,3 +81,10 @@ class Greeting extends Component {
 <blockquote>
 "Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface" by Doug Mcllroy
 </blockquote>
+
+### JS Tips
+- Use map, filter & reduce instead for/while loop in JSX (not a hard rule but recommendation)
+- **Rule of hooks** : Don't call hooks inside a loop or condition
+
+### Editor
+- Use 'prettier' extension in VSCode with "Format on save" enabled in editor settings
