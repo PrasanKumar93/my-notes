@@ -1,0 +1,9 @@
+
+# Dependencies
+node_modules
+
+# other
+ignore-commit
+
+# vscode chrome 
+.chrome
