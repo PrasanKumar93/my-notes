@@ -8,6 +8,8 @@
 
 - [AWS SDK for javascript](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/welcome.html)
 
+- [Connecting state machines](https://docs.aws.amazon.com/step-functions/latest/dg/connect-stepfunctions.html)
+
 ## Features
 
 - Manage execution order
@@ -39,7 +41,7 @@
 | Run for one year                         | Run for 5 minutes                                                             |
 | 2,000 executions per second              | 100,000 executions per second                                                 |
 | 4,000 transitions per second per account | Nearly unlimited state transitions                                            |
-| Priced per state transition              | Priced on the number of executions, the duration and their memory consumption |
+| Priced per **state** transition          | Priced on the number of executions, the duration and their memory consumption |
 | Support Activities                       | Don’t support Activities                                                      |
 
 - [Pricing](https://aws.amazon.com/step-functions/pricing/)
