@@ -250,3 +250,64 @@
     }
 }
 ```
+
+### Catch
+
+- [Docs](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-error-handling.html)
+
+```js
+{
+    "State_Name": {
+        "Type": "Task",
+        "Resource": "arn:aws:lambda:function",
+        "Catch": [{ //array, so can define multiple error handling queries
+            "ErrorEquals": ["ErrorType"],
+            "Next": "StateToGoToWhenErrorOccurs"
+        }]
+    }
+}
+```
+
+```js
+{
+    "Catch": [{
+        "ErrorEquals": ["EmailSendingFailure"], //specific error catch
+        "Next": "Cleanup",
+        "ResultPath": "$.emailSendingError"
+    }, {
+        "ErrorEquals": ["States.All"], //generic error catch
+        "Next": "Cleanup",
+        "ResultPath": "$.encryptionError"
+    }]
+}
+```
+
+- States.ALL
+  - A wildcard that matches any known error name.
+- States.Runtime
+  - An execution failed due to some exception that could not be processed.
+- States.Timeout
+  - A Task state either ran longer than the TimeoutSeconds value, or failed to send a heartbeat for a period longer than the HeartbeatSeconds value.
+- States.TaskFailed
+  - A Task state failed during the execution.
+- States.Permissions
+  - A Task state failed because it had insufficient privileges to execute the specified code.
+
+```js
+{
+    "State_Name": {
+        "Type": "Task",
+        "Resource": "arn:aws:lambda:function",
+        "Retry": [{
+            "ErrorEquals": ["ErrorType"], //retry if error with this type is caught
+            "IntervalSeconds": 10, //wait seconds before the first retry
+            "MaxAttempts": 2, //amount of retry attempts
+            "BackoffRate": 2 //multiplier by which the retry interval increases
+        }]
+    }
+}
+```
+
+## Triggered
+
+- Step functions can be triggered programmatically (SDK), API gateway, cloud watch events
